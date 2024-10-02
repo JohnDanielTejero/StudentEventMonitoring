@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using StudentEventMonitoring.utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +14,16 @@ namespace StudentEventMonitoring
 {
     public partial class Form1 : Form
     {
+        private DbCon connection;
         public Form1()
         {
             InitializeComponent();
+            connection = DbCon.Instance();
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
+
             AddStudent AddStudent = new AddStudent();
             AddStudent.Show();
             this.Hide();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentEventMonitoring.utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,13 @@ namespace StudentEventMonitoring
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Create an instance of db con with proper configurations
+            DbCon configuration = DbConf.Instance()
+                    .SetServer("localhost")
+                    .SetUser("root")    
+                    .SetPassword("password")
+                    .SetDatabase("wam1_midterm_db")
+                    .Build();
             Application.Run(new Form1());
         }
     }

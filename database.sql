@@ -22,7 +22,7 @@ CREATE TABLE events(
 
 CREATE TABLE attendances(
  student_number VARCHAR(255) NOT NULL,
- event_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+ event_id INT AUTO_INCREMENT NOT NULL,
  timein DATETIME,
  timeout DATETIME,
  FOREIGN KEY(student_number) REFERENCES students(student_number),
