@@ -8,13 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Attendance
+namespace StudentEventMonitoring
 {
-    public partial class Form2 : Form
+    public partial class CreateEvent : Form
     {
-        public Form2()
+        public CreateEvent()
         {
             InitializeComponent();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            EventList eventlist = new EventList();
+            eventlist.Show();
+            this.Hide();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

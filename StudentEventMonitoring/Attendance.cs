@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Attendance
+namespace StudentEventMonitoring
 {
-    public partial class Form3 : Form
+    public partial class Attendance : Form
     {
-        public Form3()
+        public Attendance()
         {
             InitializeComponent();
         }

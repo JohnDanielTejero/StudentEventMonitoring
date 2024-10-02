@@ -8,13 +8,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Attendance
+namespace StudentEventMonitoring
 {
-    public partial class Form1 : Form
+    public partial class EventList : Form
     {
-        public Form1()
+        public EventList()
         {
             InitializeComponent();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form1 landingpage = new Form1();
+            landingpage.Show();
+            this.Hide();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            CreateEvent createEvent = new CreateEvent();
+            createEvent.Show();
+            this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

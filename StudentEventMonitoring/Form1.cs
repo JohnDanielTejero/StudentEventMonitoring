@@ -35,13 +35,18 @@ namespace StudentEventMonitoring
             studentList.Show();
             this.Hide();
 
-            /*AttendanceList attendanceList = new AttendanceList();
-             attendanceList.Show();
-             this.Hide();*/
         }
 
         private void btnEventList_Click(object sender, EventArgs e)
         {
+            EventList eventlist = new EventList();
+            eventlist.Show();
+            this.Hide();
+
+            //Pantesting para lang maview yung design ng Event Page
+            /*EventPage eventPage = new EventPage();
+            eventPage.Show();
+            this.Hide();*/
 
         }
     }

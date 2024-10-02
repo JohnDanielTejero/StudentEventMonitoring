@@ -145,6 +145,7 @@ namespace StudentEventMonitoring
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // panel3
             // 
@@ -163,7 +164,7 @@ namespace StudentEventMonitoring
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(250)))));
             this.label1.Location = new System.Drawing.Point(94, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(275, 40);
+            this.label1.Size = new System.Drawing.Size(263, 40);
             this.label1.TabIndex = 0;
             this.label1.Text = "Attendance List";
             // 

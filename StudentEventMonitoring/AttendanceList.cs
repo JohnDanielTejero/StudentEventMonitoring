@@ -16,5 +16,12 @@ namespace StudentEventMonitoring
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            EventPage eventPage = new EventPage();
+            eventPage.Show();
+            this.Hide();
+        }
     }
 }
