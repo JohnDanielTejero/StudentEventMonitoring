@@ -151,6 +151,7 @@
     <Compile Include="StudentList.Designer.cs">
       <DependentUpon>StudentList.cs</DependentUpon>
     </Compile>
+    <Compile Include="utils\Validation.cs" />
     <Compile Include="utils\DbCon.cs" />
     <Compile Include="utils\DbConf.cs" />
     <EmbeddedResource Include="AddStudent.resx">
