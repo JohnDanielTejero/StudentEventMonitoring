@@ -143,6 +143,7 @@
     <Compile Include="models\AttendanceModel.cs" />
     <Compile Include="models\EventModel.cs" />
     <Compile Include="models\StudentModel.cs" />
+    <Compile Include="MySqlReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentList.cs">
