@@ -48,7 +48,7 @@ namespace StudentEventMonitoring
                         }
                     }
                     catch (Exception ex) {
-                        MessageBox.Show($"{ex.Message} Please try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"{ex.Message}. Please try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else {

@@ -67,10 +67,13 @@ namespace StudentEventMonitoring
             // 
             // studentsTable
             // 
+            this.studentsTable.AllowUserToAddRows = false;
+            this.studentsTable.AllowUserToDeleteRows = false;
             this.studentsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentsTable.Location = new System.Drawing.Point(37, 232);
             this.studentsTable.Margin = new System.Windows.Forms.Padding(2);
             this.studentsTable.Name = "studentsTable";
+            this.studentsTable.ReadOnly = true;
             this.studentsTable.RowHeadersWidth = 51;
             this.studentsTable.RowTemplate.Height = 24;
             this.studentsTable.Size = new System.Drawing.Size(641, 246);
@@ -153,6 +156,7 @@ namespace StudentEventMonitoring
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panel3
             // 
