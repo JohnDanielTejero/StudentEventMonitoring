@@ -129,6 +129,7 @@ namespace StudentEventMonitoring
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(608, 29);
             this.search.TabIndex = 0;
+            this.search.TextChanged += new System.EventHandler(this.search_TextChanged);
             // 
             // btnBack
             // 

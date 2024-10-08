@@ -63,7 +63,7 @@ namespace StudentEventMonitoring
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(730, 635);
             this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
             // 
             // studentsTable
             // 
@@ -203,7 +203,6 @@ namespace StudentEventMonitoring
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentList";
             this.Text = "StudentList";
-            this.Load += new System.EventHandler(this.StudentList_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentsTable)).EndInit();
             this.groupBox1.ResumeLayout(false);

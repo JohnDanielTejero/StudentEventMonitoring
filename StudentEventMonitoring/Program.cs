@@ -21,7 +21,7 @@ namespace StudentEventMonitoring
             DbCon configuration = DbConf.Instance()
                     .SetServer("localhost")
                     .SetUser("root")    
-                    .SetPassword("")
+                    .SetPassword("Ks1auhJ!")
                     .SetDatabase("wam1_midterm_db")
                     .Build();
             Application.Run(new Form1());

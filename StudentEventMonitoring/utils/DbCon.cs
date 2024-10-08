@@ -122,7 +122,7 @@ namespace StudentEventMonitoring.utils
             return command.ExecuteReader();
         }
 
-        public MySqlDataReader ReadDataOR(string table, Dictionary<string, string> parameters)
+        public MySqlDataReader ReadMatchData(string table, Dictionary<string, string> parameters)
         {
             this.IsConnect();
 

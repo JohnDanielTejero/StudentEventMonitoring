@@ -14,6 +14,8 @@ namespace StudentEventMonitoring
 {
     public partial class EventList : Form
     {
+        private Timer debounceTimer;
+        private const int debounceInterval = 300;
 
         private DbCon connection;
         public EventList()
@@ -21,6 +23,77 @@ namespace StudentEventMonitoring
             InitializeComponent();
             connection = DbCon.Instance();
             populateTable();
+            debounceTimer = new Timer();
+            debounceTimer.Interval = debounceInterval;
+            debounceTimer.Tick += DebounceTimer_Tick;
+        }
+
+        private void DebounceTimer_Tick(object sender, EventArgs e)
+        {
+            debounceTimer.Stop();
+            string searchInput = search.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchInput))
+            {
+                populateTable();
+                return;
+            }
+
+            MySqlDataReader reader = null;
+
+            DataTable table = new DataTable();
+            table.Columns.Add("ID");
+            table.Columns.Add("Title");
+            table.Columns.Add("Start");
+            table.Columns.Add("End");
+            table.Columns.Add("Description");
+
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "title", $"%{searchInput}%" },
+                    { "description", $"%{searchInput}%" },
+                };
+
+                if (connection.Connection.State == System.Data.ConnectionState.Open && reader != null)
+                {
+                    reader.Close();
+                }
+
+                reader = connection.ReadMatchData("events", parameters);
+
+                while (reader.Read())
+                {
+
+                    DataRow row = table.NewRow();
+                    row["ID"] = reader["event_id"];
+                    row["Title"] = reader["title"];
+                    row["Start"] = reader["start_date"];
+                    row["End"] = reader["end_date"];
+                    row["Description"] = reader["description"];
+                    table.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"{ex}. Please try again.",
+                    "Error!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+
+            events.DataSource = table;
         }
 
         private void populateTable()
@@ -94,5 +167,13 @@ namespace StudentEventMonitoring
             this.Hide();
             new EventPage(Convert.ToInt32(events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value)).Show();
         }
+
+        private void search_TextChanged(object sender, EventArgs e)
+        {
+            debounceTimer.Stop();
+            debounceTimer.Start();
+            
+        }
     }
+
 }

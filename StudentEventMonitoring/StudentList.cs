@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using StudentEventMonitoring.models;
 using StudentEventMonitoring.utils;
 
 namespace StudentEventMonitoring
@@ -16,10 +10,86 @@ namespace StudentEventMonitoring
     public partial class StudentList : Form
     {
         DbCon con;
+        private Timer debounceTimer;
+        private const int debounceInterval = 300;
         public StudentList()
         {
             InitializeComponent();
             con = DbCon.Instance();
+            debounceTimer = new Timer();
+            debounceTimer.Interval = debounceInterval;
+            debounceTimer.Tick += DebounceTimer_Tick;
+        }
+
+        private void DebounceTimer_Tick(object sender, EventArgs e)
+        {
+            debounceTimer.Stop();
+            string searchInput = searchBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchInput))
+            {
+                LoadStudentsData();
+                return;
+            }
+
+            MySqlDataReader reader = null;
+
+            DataTable table = new DataTable();
+            table.Columns.Add("Student Number");
+            table.Columns.Add("First Name");
+            table.Columns.Add("Last Name");
+            table.Columns.Add("Program");
+            table.Columns.Add("Year Level");
+
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "student_number", $"%{searchInput}%" },
+                    { "first_name", $"%{searchInput}%" },
+                    { "last_name", $"%{searchInput}%" },
+                    { "program", $"%{searchInput}%" },
+                    { "year_level", $"%{searchInput}%" }
+                };
+
+                if (con.Connection.State == System.Data.ConnectionState.Open && reader != null)
+                {
+                    reader.Close();
+                }
+
+                reader = con.ReadMatchData("students", parameters);
+
+                while (reader.Read())
+                {
+                    DataRow row = table.NewRow();
+                    row["Student Number"] = reader["student_number"];
+                    row["First Name"] = reader["first_name"];
+                    row["Last Name"] = reader["last_name"];
+                    row["Program"] = reader["program"];
+                    row["Year Level"] = reader["year_level"];
+
+                    table.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"{ex}. Please try again.",
+                    "Error!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+
+            studentsTable.DataSource = table;
         }
 
         private void LoadStudentsData() 
@@ -79,16 +149,6 @@ namespace StudentEventMonitoring
             LoadStudentsData();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void StudentList_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (studentsTable.SelectedRows.Count > 0)
@@ -130,72 +190,8 @@ namespace StudentEventMonitoring
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            string searchInput = searchBox.Text.Trim();
-
-            if (string.IsNullOrEmpty(searchInput))
-            {
-                LoadStudentsData();
-                return;
-            }
-
-            MySqlDataReader reader = null;
-
-            DataTable table = new DataTable();
-            table.Columns.Add("Student Number");
-            table.Columns.Add("First Name");
-            table.Columns.Add("Last Name");
-            table.Columns.Add("Program");
-            table.Columns.Add("Year Level");
-
-            try
-            {
-                var parameters = new Dictionary<string, string>
-                {
-                    { "student_number", $"%{searchInput}%" },
-                    { "first_name", $"%{searchInput}%" },
-                    { "last_name", $"%{searchInput}%" },
-                    { "program", $"%{searchInput}%" },
-                    { "year_level", $"%{searchInput}%" }
-                };
-
-                if (con.Connection.State == System.Data.ConnectionState.Open && reader != null)
-                {
-                    reader.Close();
-                }
-
-                reader = con.ReadDataOR("students", parameters);
-
-                while (reader.Read())
-                {
-                    DataRow row = table.NewRow();
-                    row["Student Number"] = reader["student_number"];
-                    row["First Name"] = reader["first_name"];
-                    row["Last Name"] = reader["last_name"];
-                    row["Program"] = reader["program"];
-                    row["Year Level"] = reader["year_level"];
-
-                    table.Rows.Add(row);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    $"{ex}. Please try again.",
-                    "Error!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
-            finally
-            {
-                if (reader != null && !reader.IsClosed)
-                {
-                    reader.Close();
-                }
-            }
-
-            studentsTable.DataSource = table;
+            debounceTimer.Stop(); 
+            debounceTimer.Start();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
