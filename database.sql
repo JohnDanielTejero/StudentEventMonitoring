@@ -15,9 +15,7 @@ CREATE TABLE events(
  title TEXT NOT NULL,
  description TEXT NOT NULL,
  start_date DATETIME NOT NULL,
- end_date DATETIME NOT NULL,
- venue VARCHAR(255) NOT NULL,
- status VARCHAR(255) NOT NULL
+ end_date DATETIME NOT NULL
 );
 
 CREATE TABLE attendances(

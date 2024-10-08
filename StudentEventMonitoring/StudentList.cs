@@ -103,6 +103,8 @@ namespace StudentEventMonitoring
                 table.Columns.Add("Last Name");
                 table.Columns.Add("Program");
                 table.Columns.Add("Year Level");
+             
+
 
                 while (reader.Read())
                 {
@@ -112,7 +114,7 @@ namespace StudentEventMonitoring
                     row["Last Name"] = reader["last_name"];
                     row["Program"] = reader["program"];
                     row["Year Level"] = reader["year_level"];
-
+                   
                     table.Rows.Add(row);
                 }
                 reader.Close();
