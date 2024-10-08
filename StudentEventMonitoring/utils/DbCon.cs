@@ -122,6 +122,34 @@ namespace StudentEventMonitoring.utils
             return command.ExecuteReader();
         }
 
+        public MySqlDataReader ReadDataOR(string table, Dictionary<string, string> parameters)
+        {
+            this.IsConnect();
+
+            string selectQuery = $"SELECT * FROM {table} WHERE ";
+            MySqlCommand command = new MySqlCommand();
+
+            if (parameters.Count > 0)
+            {
+                List<string> conditions = new List<string>();
+
+                foreach (var kvp in parameters)
+                {
+                    conditions.Add($"{kvp.Key} LIKE @{kvp.Key}");
+                    command.Parameters.AddWithValue($"@{kvp.Key}", kvp.Value);
+                }
+
+                selectQuery += string.Join(" OR ", conditions);
+            }
+            else {
+                throw new ArgumentException("No parameters provided for the query.");
+            }
+
+            command.CommandText = selectQuery;
+            command.Connection = Connection;
+            return command.ExecuteReader();
+        }
+
         /**
          * Inserts data into a specified table.
          *
