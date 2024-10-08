@@ -32,7 +32,7 @@ namespace StudentEventMonitoring
                 table.Columns.Add("First Name");
                 table.Columns.Add("Last Name");
                 table.Columns.Add("Program");
-                table.Columns.Add("Year");
+                table.Columns.Add("Year Level");
 
                 while (reader.Read())
                 {
@@ -41,7 +41,7 @@ namespace StudentEventMonitoring
                     row["First Name"] = reader["first_name"];
                     row["Last Name"] = reader["last_name"];
                     row["Program"] = reader["program"];
-                    row["Year"] = reader["year_level"];
+                    row["Year Level"] = reader["year_level"];
 
                     table.Rows.Add(row);
                 }
@@ -126,6 +126,81 @@ namespace StudentEventMonitoring
             {
                 MessageBox.Show("Please select the student's row that you want to delete.", "No row selected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchInput = searchBox.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchInput))
+            {
+                LoadStudentsData();
+                return;
+            }
+
+            MySqlDataReader reader = null;
+
+            DataTable table = new DataTable();
+            table.Columns.Add("Student Number");
+            table.Columns.Add("First Name");
+            table.Columns.Add("Last Name");
+            table.Columns.Add("Program");
+            table.Columns.Add("Year Level");
+
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "student_number", $"%{searchInput}%" },
+                    { "first_name", $"%{searchInput}%" },
+                    { "last_name", $"%{searchInput}%" },
+                    { "program", $"%{searchInput}%" },
+                    { "year_level", $"%{searchInput}%" }
+                };
+
+                if (con.Connection.State == System.Data.ConnectionState.Open && reader != null)
+                {
+                    reader.Close();
+                }
+
+                reader = con.ReadDataOR("students", parameters);
+
+                while (reader.Read())
+                {
+                    DataRow row = table.NewRow();
+                    row["Student Number"] = reader["student_number"];
+                    row["First Name"] = reader["first_name"];
+                    row["Last Name"] = reader["last_name"];
+                    row["Program"] = reader["program"];
+                    row["Year Level"] = reader["year_level"];
+
+                    table.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"{ex}. Please try again.",
+                    "Error!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+
+            studentsTable.DataSource = table;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
