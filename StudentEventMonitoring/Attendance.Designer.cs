@@ -31,11 +31,11 @@ namespace StudentEventMonitoring
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.studentidinput = new System.Windows.Forms.TextBox();
+            this.btnEnter = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnEnter = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -49,7 +49,7 @@ namespace StudentEventMonitoring
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(-26, -37);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(492, 567);
             this.panel1.TabIndex = 1;
@@ -57,33 +57,47 @@ namespace StudentEventMonitoring
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.studentidinput);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(73, 180);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(340, 98);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Student Number";
             // 
-            // textBox1
+            // studentidinput
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(16, 41);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 40);
-            this.textBox1.TabIndex = 0;
+            this.studentidinput.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.studentidinput.Location = new System.Drawing.Point(16, 41);
+            this.studentidinput.Margin = new System.Windows.Forms.Padding(2);
+            this.studentidinput.Name = "studentidinput";
+            this.studentidinput.Size = new System.Drawing.Size(309, 40);
+            this.studentidinput.TabIndex = 0;
+            // 
+            // btnEnter
+            // 
+            this.btnEnter.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnEnter.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnter.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEnter.Location = new System.Drawing.Point(149, 337);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEnter.Name = "btnEnter";
+            this.btnEnter.Size = new System.Drawing.Size(162, 58);
+            this.btnEnter.TabIndex = 6;
+            this.btnEnter.Text = "Enter";
+            this.btnEnter.UseVisualStyleBackColor = false;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(26, 33);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(439, 81);
             this.panel3.TabIndex = 3;
@@ -105,23 +119,10 @@ namespace StudentEventMonitoring
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel2.Location = new System.Drawing.Point(-15, 124);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(480, 8);
             this.panel2.TabIndex = 2;
-            // 
-            // btnEnter
-            // 
-            this.btnEnter.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnEnter.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnEnter.Location = new System.Drawing.Point(149, 337);
-            this.btnEnter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(162, 58);
-            this.btnEnter.TabIndex = 6;
-            this.btnEnter.Text = "Enter";
-            this.btnEnter.UseVisualStyleBackColor = false;
             // 
             // Attendance
             // 
@@ -129,7 +130,7 @@ namespace StudentEventMonitoring
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 430);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Attendance";
             this.Text = "Attendance";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Attendance_FormClosed);
@@ -149,7 +150,7 @@ namespace StudentEventMonitoring
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox studentidinput;
         private System.Windows.Forms.Button btnEnter;
     }
 }

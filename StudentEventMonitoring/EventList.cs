@@ -136,24 +136,67 @@ namespace StudentEventMonitoring
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new CreateEvent(Convert.ToInt32(events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value)).Show();
+            try
+            {
+               
+                if (events.CurrentCell != null)
+                {
+                    var selectedCell = events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value;
+
+                    if (selectedCell != null && int.TryParse(selectedCell.ToString(), out int id))
+                    {
+                        new CreateEvent(id).Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No valid record selected.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No cell is currently selected.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+
             try
             {
-                int id = Convert.ToInt32(events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value);
-                if (!connection.DeleteData("events", new Dictionary<string, string>() { { "event_id", id.ToString() } })) throw new Exception("Failed to Delete");
+                if (events.CurrentCell != null)
+                {
+                    var selectedCell = events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value;
 
-                MessageBox.Show("Record Deleted");
-                this.Dispose();
-                new EventList().Show();
+                    if (selectedCell != null && int.TryParse(selectedCell.ToString(), out int id))
+                    {
+                        if (!connection.DeleteData("events", new Dictionary<string, string>() { { "event_id", id.ToString() } }))
+                        {
+                            throw new Exception("Failed to Delete");
+                        }
+
+                        MessageBox.Show("Record Deleted");
+                        this.Dispose(); 
+                        new EventList().Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No valid record selected.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No cell is currently selected.");
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Failed to delete\n\nMessage:" + ex.Message);
+                MessageBox.Show("Failed to delete\n\nMessage: " + ex.Message);
             }
         }
 

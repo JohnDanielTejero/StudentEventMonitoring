@@ -30,12 +30,7 @@ namespace StudentEventMonitoring
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.studentNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.program = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attendances = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
@@ -43,7 +38,7 @@ namespace StudentEventMonitoring
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendances)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -52,66 +47,28 @@ namespace StudentEventMonitoring
             // 
             this.panel1.BackgroundImage = global::StudentEventMonitoring.Properties.Resources.darker_bg31;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.attendances);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnBack);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, -53);
+            this.panel1.Location = new System.Drawing.Point(0, -43);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(974, 781);
+            this.panel1.Size = new System.Drawing.Size(730, 635);
             this.panel1.TabIndex = 3;
             // 
-            // dataGridView1
+            // attendances
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentNo,
-            this.firstName,
-            this.lastName,
-            this.program,
-            this.year});
-            this.dataGridView1.Location = new System.Drawing.Point(49, 287);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(855, 303);
-            this.dataGridView1.TabIndex = 11;
-            // 
-            // studentNo
-            // 
-            this.studentNo.HeaderText = "Student Number";
-            this.studentNo.MinimumWidth = 6;
-            this.studentNo.Name = "studentNo";
-            this.studentNo.Width = 125;
-            // 
-            // firstName
-            // 
-            this.firstName.HeaderText = "First Name";
-            this.firstName.MinimumWidth = 6;
-            this.firstName.Name = "firstName";
-            this.firstName.Width = 125;
-            // 
-            // lastName
-            // 
-            this.lastName.HeaderText = "Last Name";
-            this.lastName.MinimumWidth = 6;
-            this.lastName.Name = "lastName";
-            this.lastName.Width = 125;
-            // 
-            // program
-            // 
-            this.program.HeaderText = "Program";
-            this.program.MinimumWidth = 6;
-            this.program.Name = "program";
-            this.program.Width = 125;
-            // 
-            // year
-            // 
-            this.year.HeaderText = "Year";
-            this.year.MinimumWidth = 6;
-            this.year.Name = "year";
-            this.year.Width = 125;
+            this.attendances.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.attendances.Location = new System.Drawing.Point(37, 233);
+            this.attendances.Margin = new System.Windows.Forms.Padding(2);
+            this.attendances.Name = "attendances";
+            this.attendances.RowHeadersWidth = 51;
+            this.attendances.RowTemplate.Height = 24;
+            this.attendances.Size = new System.Drawing.Size(641, 246);
+            this.attendances.TabIndex = 11;
+            this.attendances.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.attendances_CellContentClick);
             // 
             // groupBox1
             // 
@@ -119,9 +76,11 @@ namespace StudentEventMonitoring
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(49, 187);
+            this.groupBox1.Location = new System.Drawing.Point(37, 152);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(855, 77);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(641, 63);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -129,9 +88,10 @@ namespace StudentEventMonitoring
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 34);
+            this.textBox1.Location = new System.Drawing.Point(16, 28);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(810, 34);
+            this.textBox1.Size = new System.Drawing.Size(608, 29);
             this.textBox1.TabIndex = 0;
             // 
             // btnBack
@@ -139,9 +99,10 @@ namespace StudentEventMonitoring
             this.btnBack.BackColor = System.Drawing.Color.DarkSlateGray;
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnBack.Location = new System.Drawing.Point(706, 626);
+            this.btnBack.Location = new System.Drawing.Point(530, 509);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(198, 66);
+            this.btnBack.Size = new System.Drawing.Size(148, 54);
             this.btnBack.TabIndex = 6;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -151,9 +112,10 @@ namespace StudentEventMonitoring
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(-38, 47);
+            this.panel3.Location = new System.Drawing.Point(-28, 38);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1012, 100);
+            this.panel3.Size = new System.Drawing.Size(759, 81);
             this.panel3.TabIndex = 3;
             // 
             // label1
@@ -162,30 +124,34 @@ namespace StudentEventMonitoring
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(250)))));
-            this.label1.Location = new System.Drawing.Point(94, 35);
+            this.label1.Location = new System.Drawing.Point(70, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 40);
+            this.label1.Size = new System.Drawing.Size(221, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Attendance List";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.panel2.Location = new System.Drawing.Point(-93, 158);
+            this.panel2.Location = new System.Drawing.Point(-70, 128);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1064, 16);
+            this.panel2.Size = new System.Drawing.Size(798, 13);
             this.panel2.TabIndex = 2;
             // 
             // AttendanceList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 672);
+            this.ClientSize = new System.Drawing.Size(713, 546);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AttendanceList";
             this.Text = "AttendantList";
+            this.Load += new System.EventHandler(this.AttendanceList_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendances)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -197,12 +163,7 @@ namespace StudentEventMonitoring
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn program;
-        private System.Windows.Forms.DataGridViewTextBoxColumn year;
+        private System.Windows.Forms.DataGridView attendances;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnBack;
