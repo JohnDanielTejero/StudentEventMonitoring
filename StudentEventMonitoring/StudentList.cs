@@ -196,6 +196,27 @@ namespace StudentEventMonitoring
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (studentsTable.SelectedRows.Count > 0)
+            {
+                var selectedRow = studentsTable.SelectedRows[0];
+
+                if (selectedRow.Cells["Student Number"] != null)
+                {
+                    string studentNumber = (string)selectedRow.Cells["Student Number"].Value;
+                    string firstName = (string)selectedRow.Cells["First Name"].Value;
+                    string lastName = (string)selectedRow.Cells["Last Name"].Value;
+                    string program = (string)selectedRow.Cells["Program"].Value;
+                    string yearLevel = (string)selectedRow.Cells["Year Level"].Value;
+
+                    AddStudent editStudentForm = new AddStudent(studentNumber, firstName, lastName, program, yearLevel);
+                    editStudentForm.Show();
+                    this.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a student to edit.", "No row selected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
     }
