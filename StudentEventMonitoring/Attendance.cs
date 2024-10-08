@@ -12,9 +12,24 @@ namespace StudentEventMonitoring
 {
     public partial class Attendance : Form
     {
+
+        int selectedEvent = -1;
+
         public Attendance()
         {
             InitializeComponent();
+        }
+
+        public Attendance(int eventId)
+        {
+            InitializeComponent();
+            selectedEvent = eventId;
+        }
+
+        private void Attendance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+            new EventPage(selectedEvent).Show();
         }
     }
 }

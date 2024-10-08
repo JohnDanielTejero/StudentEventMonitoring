@@ -59,7 +59,7 @@ namespace StudentEventMonitoring
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(-4, -44);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(730, 635);
             this.panel1.TabIndex = 3;
@@ -68,7 +68,7 @@ namespace StudentEventMonitoring
             // 
             this.events.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.events.Location = new System.Drawing.Point(41, 232);
-            this.events.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.events.Margin = new System.Windows.Forms.Padding(2);
             this.events.Name = "events";
             this.events.ReadOnly = true;
             this.events.RowHeadersWidth = 51;
@@ -76,6 +76,7 @@ namespace StudentEventMonitoring
             this.events.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.events.Size = new System.Drawing.Size(641, 246);
             this.events.TabIndex = 11;
+            this.events.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.events_CellDoubleClick);
             // 
             // btnCreate
             // 
@@ -83,7 +84,7 @@ namespace StudentEventMonitoring
             this.btnCreate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
             this.btnCreate.Location = new System.Drawing.Point(534, 503);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(148, 54);
             this.btnCreate.TabIndex = 10;
@@ -97,7 +98,7 @@ namespace StudentEventMonitoring
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
             this.btnEdit.Location = new System.Drawing.Point(370, 503);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(148, 54);
             this.btnEdit.TabIndex = 9;
@@ -112,9 +113,9 @@ namespace StudentEventMonitoring
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(41, 151);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(641, 63);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
@@ -124,7 +125,7 @@ namespace StudentEventMonitoring
             // 
             this.search.Font = new System.Drawing.Font("Century Gothic", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(21, 27);
-            this.search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.search.Margin = new System.Windows.Forms.Padding(2);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(608, 29);
             this.search.TabIndex = 0;
@@ -135,7 +136,7 @@ namespace StudentEventMonitoring
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.SystemColors.Control;
             this.btnBack.Location = new System.Drawing.Point(41, 503);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(148, 54);
             this.btnBack.TabIndex = 6;
@@ -149,7 +150,7 @@ namespace StudentEventMonitoring
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(206, 503);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(148, 54);
             this.btnDelete.TabIndex = 5;
@@ -162,7 +163,7 @@ namespace StudentEventMonitoring
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(-24, 37);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(759, 81);
             this.panel3.TabIndex = 3;
@@ -184,7 +185,7 @@ namespace StudentEventMonitoring
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel2.Location = new System.Drawing.Point(-65, 128);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(798, 13);
             this.panel2.TabIndex = 2;
@@ -195,7 +196,7 @@ namespace StudentEventMonitoring
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 546);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EventList";
             this.Text = "EventList";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EventList_FormClosed);

@@ -12,14 +12,22 @@ namespace StudentEventMonitoring
 {
     public partial class AttendanceList : Form
     {
+        public int selectedEvent = -1;
+
         public AttendanceList()
         {
             InitializeComponent();
         }
 
+        public AttendanceList(int eventId)
+        {
+            InitializeComponent();
+            selectedEvent = eventId;
+        }
+
         private void btnBack_Click(object sender, EventArgs e)
         {
-            EventPage eventPage = new EventPage();
+            EventPage eventPage = new EventPage(selectedEvent);
             eventPage.Show();
             this.Hide();
         }

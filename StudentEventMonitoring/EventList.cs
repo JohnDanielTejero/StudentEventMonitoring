@@ -63,7 +63,8 @@ namespace StudentEventMonitoring
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new CreateEvent(Convert.ToInt32(events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value)).Show();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -86,6 +87,12 @@ namespace StudentEventMonitoring
         private void EventList_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void events_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Hide();
+            new EventPage(Convert.ToInt32(events.Rows[events.CurrentCell.RowIndex].Cells["ID"].Value)).Show();
         }
     }
 }
