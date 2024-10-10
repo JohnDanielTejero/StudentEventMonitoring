@@ -32,7 +32,7 @@ namespace StudentEventMonitoring
             this.panel1 = new System.Windows.Forms.Panel();
             this.attendances = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchbox = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@ namespace StudentEventMonitoring
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.searchbox);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(37, 152);
@@ -85,14 +85,15 @@ namespace StudentEventMonitoring
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
-            // textBox1
+            // searchbox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(16, 28);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(608, 29);
-            this.textBox1.TabIndex = 0;
+            this.searchbox.Font = new System.Drawing.Font("Century Gothic", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchbox.Location = new System.Drawing.Point(16, 28);
+            this.searchbox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchbox.Name = "searchbox";
+            this.searchbox.Size = new System.Drawing.Size(608, 29);
+            this.searchbox.TabIndex = 0;
+            this.searchbox.TextChanged += new System.EventHandler(this.searchbox_TextChanged);
             // 
             // btnBack
             // 
@@ -165,7 +166,7 @@ namespace StudentEventMonitoring
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView attendances;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchbox;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;

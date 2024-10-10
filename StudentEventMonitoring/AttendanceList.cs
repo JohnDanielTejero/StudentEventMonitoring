@@ -38,6 +38,31 @@ namespace StudentEventMonitoring
 
         private void AttendanceList_Load(object sender, EventArgs e)
         {
+            this.loadStudentData("");
+        }
+
+        private void loadStudentData(string search) {
+            string query = "";
+             if (string.IsNullOrWhiteSpace(search))
+            {
+             query = @"
+                SELECT s.student_number, s.first_name, s.last_name, s.program, s.year_level, a.timein, a.timeout
+                FROM students s
+                JOIN attendances a ON s.student_number = a.student_number
+                WHERE a.event_id = @eventId;";
+                
+            }
+            else
+            {
+                query = @"
+                    SELECT s.student_number, s.first_name, s.last_name, s.program, s.year_level, a.timein, a.timeout
+                    FROM students s
+                    JOIN attendances a ON s.student_number = a.student_number
+                    WHERE a.event_id = @eventId AND (
+                        s.student_number LIKE @search OR s.first_name LIKE @search OR s.last_name LIKE @search OR s.program LIKE @search OR s.year_level LIKE @search
+                    );";
+            }
+
             DataTable table = new DataTable();
             table.Columns.Add("Student Number");
             table.Columns.Add("First Name");
@@ -46,12 +71,6 @@ namespace StudentEventMonitoring
             table.Columns.Add("Year Level");
             table.Columns.Add("Time in");
             table.Columns.Add("Time out");
-
-            string query = @"
-                SELECT s.student_number, s.first_name, s.last_name, s.program, s.year_level, a.timein, a.timeout
-                FROM students s
-                JOIN attendances a ON s.student_number = a.student_number
-                WHERE a.event_id = @eventId;";
 
             try
             {
@@ -64,6 +83,12 @@ namespace StudentEventMonitoring
                        
                         Console.WriteLine($"Selected Event ID: {selectedEvent}");
                         cmd.Parameters.AddWithValue("@eventId", selectedEvent);
+
+                        if (!string.IsNullOrWhiteSpace(search))
+                        {
+                            // Add '%' around the search string for the LIKE clause
+                            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
+                        }
 
                         using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -96,6 +121,10 @@ namespace StudentEventMonitoring
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
+        }
+        private void searchbox_TextChanged(object sender, EventArgs e)
+        {
+            loadStudentData(this.searchbox.Text);
         }
     }
 }
